@@ -65,7 +65,7 @@ suite('Functional Tests', function () {
 });
 
 const Browser = require('zombie');
-Browser.site('https://serene-forest-22269.herokuapp.com');
+Browser.localhost('https://serene-forest-22269.herokuapp.com', process.env.PORT || 3000);
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
