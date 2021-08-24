@@ -39,18 +39,22 @@ suite('Functional Tests', function () {
         .send({surname: "Colombo"})
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.deepEqual(res.body, {
-            name: 'Cristoforo',
-            surname: 'Colombo',
-            dates: '1451 - 1506'
-          });
+          assert.equal(res.type, 'application/json')
+          assert.equal(res.body.name, 'Cristoforo')
+          assert.equal(res.body.surname, 'Colombo')
 
           done();
         });
     });
     // #4
     test('Send {surname: "da Verrazzano"}', function (done) {
-      assert.fail();
+      chai
+        .request(server)
+        .put('/travellers')
+        .send({surname: "da Verrazzano"})
+        .end((err, res) => {
+
+        })
 
       done();
     });
