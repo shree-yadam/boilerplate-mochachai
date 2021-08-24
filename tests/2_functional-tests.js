@@ -36,9 +36,14 @@ suite('Functional Tests', function () {
       chai
         .request(server)
         .put('/travellers')
-
+        .send({surname: "Colombo"})
         .end(function (err, res) {
-          assert.fail();
+          assert.equal(res.status, 200);
+          assert.deepEqual(res.body, {
+            name: 'Cristoforo',
+            surname: 'Colombo',
+            dates: '1451 - 1506'
+          });
 
           done();
         });
